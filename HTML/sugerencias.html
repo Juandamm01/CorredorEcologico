@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugerencias</title>
+
+    <link rel="stylesheet" href="../CSS/sugerencias.css">
+</head>
+<body>  
+    <header class="transparente">
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="sugerencias.html" class="activo">Sugerencias</a>
+            <a href="registro.html">Registro</a>
+        </nav>
+    </header>
+
+    <!-- Campo para enviar sugerencia -->
+    <section class="contenedor">
+
+        <section class="formularioSugerencia">
+            <h2>Escribe tu sugerencia para mejorar el Corredor Ecologico de Villavicencio</h2>
+            <textarea id="textoSugerencia" placeholder="¿Qué idea tienes? ¿Por qué? ¿De qué trataría?" maxlength="1000" ></textarea>
+            <button id="enviarSugerencia">Enviar sugerencia</button>
+        </section>
+    
+        <!-- Lista de todas las sugerencias -->
+        <p style="font-weight: 800; font-size: 30px; margin-top: 10px;">Sugerencias de los usuarios</p>
+
+        <section class="filtros">
+            <button id="ordenarReciente">Ordenar por Reciente</button>
+            <button id="ordenarCalificacion">Ordenar por Calificacion</button>
+        </section>
+
+        <section class="listaSugerencias" id="contenedorSugerencias">
+            <ul id="sugerencias">
+                
+            </ul>
+        </section>
+
+        <!-- Pop-up para mostrar la sugerencia completa -->
+
+        <section id="sugerenciaGrande" class="sugerenciaGrande" data-id="123">
+            <div class="sugerenciaGrande-contenido">
+                <span id="cerrarSugerenciaGrande" class="cerrar-sugerenciaGrande">&times;</span>
+                <h3 id="nombreSugerenciaGrande"></h3>
+                <p id="textoCompletoSugerenciaGrande"></p>
+
+                <!-- Sistema de calificación con estrellas -->
+                <div id="calificacionContenedor">
+                    <p style="font-weight: 700; margin-top: 20px; display: flex; justify-content: center;">Califica esta sugerencia</p>
+                    <div class="estrellas" id="estrellas">
+                        <span class="estrella" data-calificacion="1">&#9733;</span>
+                        <span class="estrella" data-calificacion="2">&#9733;</span>
+                        <span class="estrella" data-calificacion="3">&#9733;</span>
+                        <span class="estrella" data-calificacion="4">&#9733;</span>
+                        <span class="estrella" data-calificacion="5">&#9733;</span>
+                    </div>
+                    <p id="promedioCalificacion"></p>
+                </div>
+            </div>
+        </section>
+    
+    </section>
+
+ 
+    <script src="../JS/sugerencias.js"></script>
+</body>
+</html>

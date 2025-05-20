@@ -1,60 +1,90 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Eco David CardMart</title>
-    <link rel="icon" type="png" href="../IMG/Captura de pantalla 2025-03-20 003204.png">
+    <title>Formulario de Registro</title>
+    <link rel="icon" type="image/png" href="../IMG/Captura_de_pantalla_2025-03-20_003204.png">
+    <link rel="stylesheet" href="../CSS/registro.css">
 </head>
 <body>
+    <header class="transparente">
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="sugerencias.html" >Sugerencias</a>
+            <a href="registro.html" class="activo" >Registro</a>
+        </nav>
+    </header>
 
-    <section id="registro">
-        <h2>Registro en Eco David CardMart</h2>
-        <p>Únete a nuestra comunidad y ayúdanos a proteger el corredor ecológico de Villavicencio.</p>
+    <section class="formulario">
+        <!-- Estado no logueado -->
+        <div id="formRegistro" class="formularioContenido">
+            
+            <form id="registroForm" class="contacto">
+                <input type="text" class="nombre" required placeholder="Nombres y apellidos" id="nombreCreacion">
+                <input type="email" class="email" required placeholder="Correo electronico" id="emailCreacion">
+                <input type="password" class="password" required placeholder="Contraseña" id="contraseñaCreacion">
+
+                
+
+                <button type="submit" id="crearCuenta">Crear cuenta</button>
+                <p><a href="#" id="avisoLegalLink" style="color: #549e00; font-size: 18px;">Aviso legal</a></p>
+                <div>
+                    <input type="checkbox" id="condiciones">
+                    <label for="condiciones">Acepto las condiciones legales</label>
+                </div>
+                <p>Si ya tienes cuenta, <a href="#" id="irLogin" style="color: #549e00;">Inicia sesión</a></p>
+            </form>
+        </div>
         
-        <!-- El formulario va a enviar los datos al flask (Python que es lo que conecta la BD) -->
-        <form action="http://127.0.0.1:5000/registrar" method="POST">
+        <!-- Estado de login -->
+        <div id="formLogin" class="formularioContenido" style="display: none;">
+            <p>Iniciar sesión</p>
+            <form id="loginForm" class="contacto">
+                <input type="email" class="email" required placeholder="Correo electronico" id="emailLogin">
+                <input type="password" class="password" required placeholder="Contraseña" id="contraseñaLogin">
+                <button type="submit" id="iniciarSesion">Iniciar sesión</button>
+            </form>
+            <p>¿No tienes cuenta?, <a href="#" id="irRegistro" style="color: #549e00;">Registrate</a></p>
+        </div>
 
+        <!-- Estado logueado -->
+    
+        <section id="perfilUsuario" class="perfil-tarjeta" style="display: none; position: relative;">
+            <button id="eliminarCuentaBtn">Eliminar cuenta</button>
+            <h2>Mi Perfil</h2>
+            <div class="datos-usuario">
+                <p><strong>Nombre:</strong> <span id="perfilNombre"></span></p>
+                <p><strong>Correo:</strong> <span id="perfilCorreo"></span></p>
+            </div>
+        
+            <button id="cerrarSesion">Cerrar sesión</button>
 
-        </form>
-        <form>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
-            <br><br>
-
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" placeholder="ejemplo@email.com" required>
-            <br><br>
-
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="Ingresa tu número" required>
-            <br><br>
-
-            <label for="ubicacion">Ubicación:</label>
-            <input type="text" id="ubicacion" name="ubicacion" placeholder="¿Dónde vives?">
-            <br><br>
-
-            <label>Intereses Ambientales:</label><br>
-            <input type="checkbox" id="reforestacion" name="intereses" value="reforestacion">
-            <label for="reforestacion">Reforestación</label><br>
-
-            <input type="checkbox" id="conservacion" name="intereses" value="conservacion">
-            <label for="conservacion">Conservación de flora y fauna</label><br>
-
-            <input type="checkbox" id="reciclaje" name="intereses" value="reciclaje">
-            <label for="reciclaje">Reciclaje y gestión de residuos</label><br>
-
-            <input type="checkbox" id="educacion" name="intereses" value="educacion">
-            <label for="educacion">Educación ambiental</label>
-            <br><br>
-
-            <label for="mensaje">Mensaje:</label>
-            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos por qué te interesa el proyecto EcoDavid CardMart"></textarea>
-            <br><br>
-
-            <button type="submit">Registrarse</button>
-        </form>
+            <section id="editarContraseñaContenedor">
+                <button id="editarContraseñaBtn" style="margin-top: 10px;">Editar contraseña</button>
+                <div id="formEditarContraseña" style="display: none; margin-top: 10px;">
+                    <input type="password" id="nuevaContraseña" placeholder="Nueva contraseña">
+                    <div style="display: flex; gap: 10px;">
+                        <button id="guardarContraseñaBtn">Guardar</button>
+                        <button id="cancelarEdicionBtn" style="background-color: rgb(248, 59, 59);">Cancelar</button>
+                    </div>
+                </div>
+            </section>
+                    
+            <h3></h3>
+            
+        </section>
+        
     </section>
 
+    <section id="popupAvisoLegal" class="popup-modal" style="display: none;">
+        <div class="popup-content">
+            <span id="closeAvisoLegal" class="close">&times;</span>
+            <h1>Aviso Legal</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis sed voluptatem, ipsam sunt odio possimus dolor non voluptate ut ea cum perferendis aperiam officia eius suscipit quas adipisci accusamus aliquam quia porro nostrum soluta culpa pariatur! Vitae eos ad consequuntur non possimus rem perferendis nulla vero eaque at, quis iste provident omnis totam cupiditate repellendus fugiat perspiciatis maxime quia beatae excepturi. Illum iusto aut unde provident vel delectus minus excepturi voluptatem veritatis hic doloremque amet corporis error sequi nobis soluta suscipit possimus animi nisi, pariatur molestiae dolore perferendis? Iusto quidem veniam alias, esse a eligendi corrupti maxime nemo. Cumque temporibus voluptate ducimus velit? Est fugiat deserunt voluptas veniam vitae sed. Quos error ex, dolorem, voluptate dolore distinctio quae officiis commodi corporis aliquid officia dignissimos ullam fugiat, molestiae saepe dolor eius! Vero magnam fugit reprehenderit libero odio aliquam neque. Voluptatibus impedit sapiente eaque quia totam aut dolor, sequi optio rem labore, earum harum quisquam! Minima explicabo fuga eum porro eveniet iure blanditiis provident amet est voluptas, architecto laborum eaque, commodi repellat ratione, delectus ipsa optio hic placeat? Quasi alias eligendi dolor ipsum, molestias dolores quos dolorum aperiam. Harum atque cumque quos voluptates, libero illo consectetur aspernatur autem eligendi architecto at nihil velit hic iusto quia numquam, dolores mollitia, suscipit facere error totam ipsam. Consequuntur doloribus debitis molestias vel omnis. Reiciendis id ullam explicabo, sunt nisi est accusantium, facere doloremque, quae expedita pariatur distinctio culpa laboriosam et deleniti excepturi quas quidem architecto dolorum? Voluptas debitis, veniam iure corrupti necessitatibus facere vel magnam facilis deleniti aperiam quisquam eaque, placeat, impedit iusto! Eaque corrupti adipisci pariatur ipsa repellendus itaque nulla fugiat labore, veniam ab. Officiis, consectetur! Fuga corrupti repellendus non quibusdam excepturi nobis, explicabo vero iure, molestias sit minima praesentium pariatur, numquam suscipit laboriosam ab. Ut facilis asperiores suscipit soluta veniam. Iste repudiandae voluptas facilis provident libero repellendus soluta sed nam itaque minus ad, dicta aspernatur voluptatum id commodi fugit error ratione accusantium numquam qui molestias blanditiis? Iusto necessitatibus saepe ipsa error minus, id earum exercitationem dolorum dicta sint perspiciatis accusantium consequuntur amet asperiores vero quas sequi est odio eum? Repellat architecto libero consectetur veritatis, molestias quisquam deserunt est esse labore, asperiores vitae obcaecati explicabo iste tenetur aspernatur totam inventore pariatur eaque animi voluptatum exercitationem porro accusamus, maxime debitis. Vitae doloremque vel architecto ut esse soluta, commodi fugit neque modi asperiores ex ea sint qui provident, suscipit blanditiis, minima repellendus maiores laboriosam nisi laborum quaerat quo voluptates quibusdam. Consectetur dignissimos obcaecati voluptas, quaerat esse a voluptates saepe tenetur fugiat nostrum praesentium recusandae itaque, nobis quos! Unde pariatur nulla sit facere, debitis tempore dolor nisi, temporibus mollitia repellat totam suscipit quas alias perspiciatis, nam excepturi eveniet quis culpa ex autem vitae voluptatibus. Repudiandae harum ex illum tenetur hic quis dolorem ullam, delectus enim nostrum fugit odio. Totam omnis error optio, ipsam nisi impedit, quas possimus dolorum provident et quod iusto itaque consequatur nostrum temporibus dignissimos eveniet aut maiores assumenda maxime doloremque. Ad sint earum eaque cumque iusto doloribus voluptate, quasi accusantium veniam itaque natus consequuntur exercitationem quos ullam! Consectetur excepturi in dolorem fuga ea similique deserunt, provident, aperiam quos dignissimos eaque iste expedita dolores! Labore magni nostrum similique, obcaecati corporis officia voluptates nobis saepe fuga molestias aut, ad facere tempora? At, nisi labore quaerat quo eaque nulla non maxime exercitationem officia magni, perferendis culpa laudantium corporis dicta nesciunt dolore vel, impedit ea voluptatum dolorem possimus doloribus. Et a iste voluptates minus aperiam fugiat tenetur, corporis dolorum. Sit quidem cupiditate fugiat architecto reiciendis dolore commodi id. Iusto ea provident modi id ad voluptas fugiat illum cumque! Suscipit voluptatibus porro molestiae quod aperiam quo aut est sed quos. Consequatur provident dignissimos suscipit repudiandae quisquam mollitia dicta, illo eos doloribus delectus ullam, ut impedit in qui, maxime quae temporibus cum adipisci voluptatum vel! Beatae eos tempora, nemo eum molestias debitis dicta dolores! Consequatur assumenda nostrum ducimus veritatis non at quia porro. Ea molestiae laborum, reiciendis veritatis similique obcaecati quas odit eaque, alias vero velit illo voluptas facilis, qui maiores eius beatae tempore quos itaque sunt quam expedita iure quibusdam? Doloremque accusantium suscipit modi beatae dolores itaque facere laboriosam harum alias autem vitae assumenda iusto nulla dolorum ea minima, obcaecati quos quisquam, expedita nemo temporibus quaerat aut eaque aliquid. Autem, temporibus est. Eaque, consequatur at suscipit voluptatibus quo nobis labore adipisci repudiandae tenetur esse officia assumenda eos? Et, repudiandae. Cumque, officia. Explicabo modi veritatis at aliquid eius facere molestiae alias incidunt et adipisci, ullam id porro ipsa autem deserunt nesciunt, a quo aperiam suscipit odit dolor provident distinctio. Eum ad perferendis architecto ipsa exercitationem aliquam. Esse cum tenetur at earum repellendus distinctio placeat molestiae voluptatum repellat minima, assumenda voluptate tempora ipsam nemo, aut amet dolores veniam cumque est consectetur rem blanditiis tempore? Blanditiis aperiam totam iure quod cupiditate esse iste est suscipit in a harum incidunt facilis ipsa, impedit mollitia alias? Animi natus aut similique itaque quaerat esse ducimus, praesentium exercitationem neque quisquam hic repellendus porro, assumenda doloremque voluptate enim magnam odio ea labore dolore! Fuga quia inventore, molestiae odio dicta sed distinctio molestias dignissimos, eligendi ratione deserunt debitis ipsa nulla id aspernatur vitae itaque laboriosam consequatur? Laborum quas non magnam eum, aspernatur fuga error dignissimos dolorem temporibus illum est rerum corporis consequatur quisquam dolore quod, soluta voluptas delectus ratione libero, molestiae quidem placeat? Perspiciatis excepturi quas ullam explicabo possimus fugiat voluptatum consequatur, quidem similique consectetur expedita blanditiis nesciunt tenetur vitae ipsam sequi accusamus? Temporibus natus dolorem nam. Magni omnis sint pariatur, aliquam sequi consequatur nam laboriosam expedita aspernatur porro culpa at error molestiae ut nulla explicabo modi rerum. Dolores qui labore nam aspernatur consectetur, eveniet vel vitae, consequuntur ipsum natus reprehenderit aliquam eaque! Reiciendis molestias natus, ratione beatae quisquam dignissimos perspiciatis? Odit culpa odio illum sint quasi corporis veniam fugit, accusantium ducimus cupiditate, necessitatibus similique in! Quidem rem, aperiam nostrum ipsum et consequatur in facilis quam amet dolorum a sequi exercitationem minus iusto aliquid quisquam libero qui. Pariatur omnis modi error earum sunt explicabo facilis, optio quidem assumenda temporibus unde vitae hic delectus? Ipsa accusamus corporis odit quas.</p>
+        </div>
+    </section>
+
+    <script src="../JS/registro.js"></script>
 </body>
 </html>
