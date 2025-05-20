@@ -1,0 +1,247 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-size: 20px;
+    background: rgb(255, 255, 255);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 10px;
+}
+a{
+    text-decoration: none;
+}
+header{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 1px 1px #000000;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: 100ms all ease-in-out;
+    nav a{
+        margin: 0px 30px;
+        color: #000000;
+        font-weight: normal;
+        font-size: 18px;
+        transition: 100ms ease-in-out all;
+    } 
+}
+header.transparente nav a {
+    color: rgba(0, 0, 0, 0.89);
+}
+
+header nav a.activo,
+header nav a:hover {
+    color: #9ddf53;
+    font-weight: bold;
+}
+
+form.contacto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    gap: 20px;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    gap: 30px;
+}
+
+input {
+    border: none;
+    border-bottom: 1.5px solid #000000 ;
+    font-size: 16px;
+    padding: 8px 16px;
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 1.5px solid #645240;
+}
+
+input.nombre {
+    background-image: url(../img/user.svg);
+    background-repeat: no-repeat;
+    background-position: 0 4px;
+    padding-left: 32px;
+}
+
+input.email {
+    background-image: url(../img/mail-bronce.svg);
+    background-repeat: no-repeat;
+    background-position: 0 4px;
+    padding-left: 32px;
+}
+input.password {
+    background-image: url(../img/mbrilock_99595_colored.svg);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 0 4px;
+    padding-left: 32px;
+}
+
+button{
+    border: none;
+    background-color: #9ddf53;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: normal;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease-in-out 200ms;
+}
+button:hover {
+    background-color: #45bb16;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+input[type="checkbox"] + label::before {
+    content: url(../img/square.svg);
+    position: relative;
+    top: 6px;
+    padding-right: 5px;
+}
+input[type="checkbox"]:checked + label::before {
+    content: url(../img/check-square.svg);
+}
+
+.aviso p {
+    font-size: 18px;
+}
+
+.perfil-tarjeta {
+    background-color: #fff;
+    border: 2px solid #9ddf53;
+    border-radius: 10px;
+    padding: 30px;
+    width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.perfil-tarjeta h2,
+.perfil-tarjeta h3 {
+    color: #9ddf53;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.datos-usuario p {
+    margin: 5px 0;
+}
+
+.sugerencias-lista {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.sugerencias-lista li {
+    margin-bottom: 5px;
+}
+
+.perfil-tarjeta button {
+    align-self: flex-end;
+    background-color: #000000;
+    padding: 10px 20px;
+}
+
+#formEditarContraseña input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#formEditarContraseña button {
+    background-color: #4CAF50;
+}
+#formEditarContraseña button:hover {
+    background-color: #388e3c;
+}
+
+#eliminarCuentaBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffdddd;
+    border: 1px solid #b30000;
+    color: #b30000;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+#eliminarCuentaBtn:hover {
+    background-color: #faa6a6;
+}
+
+/* Estilo del pop-up */
+.popup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto;
+    p{
+        font-size: 18px;
+        color: #333;
+        line-height: 1.6;
+        word-wrap: break-word; 
+        overflow-wrap: break-word; 
+    }
+}
+
+.popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+    position: relative;
+    max-height: 80vh; 
+    overflow-y: auto; 
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
